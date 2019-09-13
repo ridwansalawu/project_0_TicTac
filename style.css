@@ -29,3 +29,8 @@ td {
 html{
     background-color:lightcyan;
 }
+
+span {
+    font-size: 40px;
+    color:rgb(7, 3, 44);
+}

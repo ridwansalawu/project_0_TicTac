@@ -1,43 +1,46 @@
 <!DOCTYPE html>
+
 <html>
 
 
   <head>
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
     <title>tictac</title>
   </head>
   <body>
+
+<script>
+</script>
+
+
       <div class="main-page">
 
           
             <strong>player0</strong>
 
-            <table>
+              <table>
 
-                  <tr>
-                    <td class="chamber" id= "1" >1</td>
-                    <td class="chamber" id= "2">2</td>
-                    <td class="chamber" id= "3">3</td>
+                  <tr id= row1>
+                    <td class="chamber" onclick= "play(this);" id="one">&nbsp;</td>
+                    <td class="chamber" onclick= "play(this);" id="two">&nbsp;</td>
+                    <td class="chamber" onclick= "play(this);" id="three">&nbsp;</td>
                   </tr>
-                  <tr>
-                    <td class="chamber" id= "4">4</td>
-                    <td class="chamber" id= "5">5</td>
-                    <td class="chamber" id= "6">6</td>
+                  <tr id= row2>
+                    <td class="chamber" onclick= "play(this);" id="four">&nbsp;</td>
+                    <td class="chamber" onclick= "play(this);" id="five">&nbsp;</td>
+                    <td class="chamber" onclick= "play(this);" id="six">&nbsp;</td>
                   </tr>
-                  <tr>
-                    <td class="chamber" id= "7">7</td>
-                    <td class="chamber" id= "8">8</td>
-                    <td class="chamber" id= "9">9</td>
+                  <tr id= row3>
+                    <td class="chamber" onclick= "play(this);" id="seven">&nbsp;</td>
+                    <td class="chamber" onclick= "play(this);" id="eight">&nbsp;</td>
+                    <td class="chamber" onclick= "play(this);" id="nine">&nbsp;</td>
                   </tr>
 
               </table>
 
-            
 
 
 
@@ -48,11 +51,7 @@
             
       </div>
 
-
- 
-
-  
-  
+  <script src="script.js"></script>
   </body>
 </html>
 
