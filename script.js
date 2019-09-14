@@ -88,6 +88,18 @@ function play(clickedCell){
          ) 
          {
         console.log("won");
+        allTd = document.querySelectorAll("td");
+        for (let x of allTd) {
+          x.style.background = "black";
+          x.innerHTML = "";
+
+        }
+        document.querySelector(".main-page").innerHTML = `<div id="won">won</div>`
+
+        console.log(allTd);
+        console.log(document.querySelector(".main-page").style = "background-color: black !important");
+
+       
         return;
 
       }   
@@ -106,64 +118,6 @@ function changeCell() {
 
   // document.getElementById("one").innerText = "new text";
   console.log(document.getElementById("one").innerHTML);
-
-// function win() {
-//   if(document.getElementById("one") == document.getElementById("two")) {
-//     console.log("winner");
-//     alert("winner");
-//   }
-// }
-
-
-
-
-
-
-// $('.chamber').click(function(){
-//     play(this);
-// });
-
-
-
-
-
-
-// let mainBoard;
-// const playerOne = x;
-// const playerTwo = o;
-// const winCombination = [
-//     [1,2,3],
-//     [4,5,6],
-//     [7,8,9],
-//     [1,4,7],
-//     [2,5,8],
-//     [3,6,9],
-//     [1,5,9],
-//     [3,5,7],
-// ]
-
-// $(document).ready(function() {
-//     $(".chamber").click(function() {
-//         $("#1").hide("slow", function(){
-            
-//             $("#1").css("background", "red");
-//         });
-//     })
-// })
-
-// let sayHello = () => alert("hello");
-
-// one.onclick = sayHello;
-
-//     document.querySelectorAll(".chamber").onclick = function() {
-//     document.getElementById("one").innerHTML= "<span>X</span>";
-//     document.getElementById("two").innerHTML= "<span>X</span>";
-//     document.getElementById("three").innerHTML= "<span>X</span>";
-//     document.getElementById("four").innerHTML= "<span>X</span>";
-//     document.getElementById("five").innerHTML= "<span>X</span>";
-//     document.getElementById("six").innerHTML= "<span>X</span>";
-//     document.getElementById("seven").innerHTML= "<span>X</span>";
-// }
 
 
 

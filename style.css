@@ -34,3 +34,10 @@ span {
     font-size: 40px;
     color:rgb(7, 3, 44);
 }
+
+#won {
+    color: white;
+    margin-top: 25;
+    padding: 100px;
+    font-size: 80px;
+}
