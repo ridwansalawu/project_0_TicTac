@@ -3,6 +3,7 @@ let symbols = {
   "ex":"X",
   "oh":"O",
 };
+let someHasWon = false;
 
 function checkEquality(arr) {
   if ((arr[0]===arr[1]) && (arr[1] === arr[2]) )
@@ -73,8 +74,19 @@ function play(clickedCell){
         document.getElementById("five").innerHTML,
         document.getElementById("seven").innerHTML,
                  ]
-      
-    
+
+      let arrTds = [
+        document.getElementById("one").innerHTML,
+        document.getElementById("two").innerHTML,
+        document.getElementById("three").innerHTML, 
+        document.getElementById("four").innerHTML,
+        document.getElementById("five").innerHTML,
+        document.getElementById("six").innerHTML,
+        document.getElementById("seven").innerHTML,
+        document.getElementById("eight").innerHTML,
+        document.getElementById("nine").innerHTML
+      ]
+
 
       if (((arrOne[0] != "&nbsp;") && checkEquality(arrOne)) || 
          ((arrTwo[0] != "&nbsp;") && checkEquality(arrTwo)) ||
@@ -84,25 +96,57 @@ function play(clickedCell){
          ((arrSix[0] != "&nbsp;") && checkEquality(arrSix)) ||
          ((arrSeven[0] != "&nbsp;") && checkEquality(arrSeven)) ||
          ((arrEight[0] != "&nbsp;") && checkEquality(arrEight)) 
-
          ) 
-         {
-        console.log("won");
-        allTd = document.querySelectorAll("td");
-        for (let x of allTd) {
-          x.style.background = "black";
-          x.innerHTML = "";
+                {
+                  someHasWon = true;
+                  
 
-        }
-        document.querySelector(".main-page").innerHTML = `<div id="won">won</div>`
+                console.log("won");
+                
 
-        console.log(allTd);
-        console.log(document.querySelector(".main-page").style = "background-color: black !important");
 
-       
-        return;
+                // console.log(arrTds);
+                // console.log(arrTds[1]);
+                // console.log(arrTds[2]);
+                // console.log(arrTds[3]);
 
-      }   
+                // allTd = document.querySelectorAll("td");
+                // for (let x of allTd) {
+                //   x.style.background = "black";
+                //   x.innerHTML = "";
+
+                // }
+              
+
+                
+                  document.querySelector(".main-page").innerHTML = `<div id="won">won</div>`;
+                  arrTds = [];
+
+                  let afterWon = document.createElement("input");
+                  afterWon.className = "after-won";
+                  afterWon.value = "Play Again";
+                  afterWon.type = "submit";
+                  afterWon.setAttribute("onclick", "clearBoard();");
+
+                  // afterWon.onclick = clearBoard
+
+                  document.querySelector(".main-page").append(afterWon);
+                
+                  return;
+
+
+                }
+
+                if (!arrTds.includes("&nbsp;") && !someHasWon) {
+                  alert("Draw");
+                }        
+     
+}
+
+const clearBoard = function() {
+  $('.chamber').html('&nbsp;');
+  // $('.after-won').remove();
+
 }
 
 function changeCell() {
