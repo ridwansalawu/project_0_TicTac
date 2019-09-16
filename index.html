@@ -12,8 +12,30 @@
   </head>
   <body>
 
-<script>
-</script>
+<div id= "intro" class="standard-view">
+
+<h1>Reedy Games</h2>
+<h3>Welcome on Board</h3>
+Please select a game
+
+    <select id='select-item'>
+        <option value="tictactoe">TicTacToe</option>
+        <option value="javascript">Javascript</option>
+        <option value="python">Python</option>
+        <option value="ruby">Ruby</option>
+   </select>
+
+    <input type="submit" value="Go" onclick="nextPage(this);">
+
+</div>
+
+<div id="players-entry" class="standard-view">
+     <h3>Please enter the name of the players</h3>
+
+<input type="text" value="Player1" id= "player1">
+<input type="text" value="Player2" id="player2">
+<input type="submit" value="Start" onclick=startGame()>
+</div>
 
 
       <div class="main-page">

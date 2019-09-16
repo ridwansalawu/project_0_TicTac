@@ -1,9 +1,29 @@
 let players = [];
+
 let symbols = {
   "ex":"X",
   "oh":"O",
 };
 let someHasWon = false;
+// let p1 = prompt("what is your name", "")
+
+function nextPage(x) {
+  if (document.getElementById("select-item").value === "tictactoe") {
+          parent = x.parentNode;
+          parent.style.display = "none";
+          x.parentNode.nextElementSibling.style.display="block";
+        }
+  else{ 
+    alert(`Be patient buddy,${document.getElementById("select-item").value} in on the way `);}
+
+  console.log(x.parentNode.nextElementSibling);
+}
+
+function startGame() {
+  document.querySelector(".main-page").style.display="block";
+}
+
+  
 
 function checkEquality(arr) {
   if ((arr[0]===arr[1]) && (arr[1] === arr[2]) )
@@ -14,7 +34,7 @@ function reset() {
 
 }
 
-console.log(document.getElementById("one").innerText);
+
 
 players[0] = "john";
 players[1] = "doe";
@@ -143,11 +163,11 @@ function play(clickedCell){
      
 }
 
-const clearBoard = function() {
-  $('.chamber').html('&nbsp;');
-  // $('.after-won').remove();
+// const clearBoard = function() {
+//   $('.chamber').html('&nbsp;');
+//   // $('.after-won').remove();
 
-}
+// }
 
 function changeCell() {
   if (nextPlayer == symbols.oh) {
