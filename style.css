@@ -77,3 +77,10 @@ span {
     
 }
 
+#reset-btn {
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+
+}

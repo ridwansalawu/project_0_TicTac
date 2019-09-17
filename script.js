@@ -1,17 +1,19 @@
 const players = [];
-
 const symbols = {
   "ex":"X",
   "oh":"O",
 };
 
+let allCells = document.querySelectorAll("td");
+let winner = "";
+
 let nextPlayers = {
   playerOne:{ 
-              "player_name":"",
+              "playerName":"",
               "symbol":symbols.oh,
              },
   playerTwo: {
-             "player_name": "",
+             "playerName": "",
              "symbol":symbols.ex,
               }
 
@@ -27,6 +29,22 @@ function toggleElem(elem) {
   else if (elem.style.display === "block") {
     elem.style.display = "none";
   }
+}
+
+function celebrateWin() {
+  for (nodez of allCells) {
+    nodez.setAttribute("style", `border: 0px solid black;
+                                 background-color: rgba(0, 8, 6, 0.8);`)
+  }
+
+
+
+
+}
+
+function checkEquality(arr) {
+  if ((arr[0]===arr[1]) && (arr[1] === arr[2]) )
+  return true;
 }
 
 
@@ -52,16 +70,16 @@ function startGame() {
       players.push(game_player1);
       players.push(game_player2);
       document.querySelector(".main-page").style.display="block";
-      document.querySelector("#display-panel").innerHTML = `<h3>${players[0]}  Vs  ${players[1]}</h3>`;
+      document.querySelector("#display-panel").innerHTML = `<h3>${players[0]} (${nextPlayers.playerOne.symbol}) Vs  ${players[1]} (${nextPlayers.playerTwo.symbol})</h3>`;
 
       
       nextPlayers = {
       playerOne:{ 
-              "player_name": players[0],
+              "playerName": players[0],
               "symbol":symbols.oh,
              },
       playerTwo: {
-             "player_name": players[1],
+             "playerName": players[1],
              "symbol":symbols.ex,
               }
 
@@ -70,14 +88,18 @@ function startGame() {
 
      console.log(nextPlayers);
 
-function checkEquality(arr) {
-  if ((arr[0]===arr[1]) && (arr[1] === arr[2]) )
-  return true;
-}
+
 
 function reset() {
+           
+          for (let p of document.querySelectorAll("td")) {
+          p.setAttribute("style", `border: 1px solid black;
+          background-color: rgba(26, 156, 102, 0.411);`);
 
-}
+          p.innerHTML = "&nbsp;"
+          // console.log(p);
+         } 
+      }
 
 
 function clearBoard() {
@@ -92,12 +114,14 @@ function clearBoard() {
 
 
 
-
+let resetNode = document.querySelector("#reset-btn");
+console.log(resetNode);
+resetNode.addEventListener("click", reset, false);
 
 
 
 let nextPlayer = nextPlayers.playerOne.symbol;
-let nextPlayerName = nextPlayers.playerOne.name;
+let nextPlayerName = nextPlayers.playerOne.playerName;
 
 // ${symbols['oh']}
 
@@ -179,24 +203,28 @@ function play(clickedCell){
          ) 
                 {
                   someHasWon = nextPlayer;
+                  if (nextPlayerName === nextPlayers.playerOne.playerName) {
+                    winner = nextPlayers.playerTwo.playerName;
+                  }
+
+                  else winner = nextPlayers.playerOne.playerName;
+                  console.log(winner + " has won");
 
 
+                  setTimeout(celebrateWin, 1000);
 
-                  
-
-                console.log(someHasWon);
-                console.log(nextPlayerName + " has won");
+                  // reset();
                 
 
 
 
-                  for (let p of document.querySelectorAll("td")) {
-                    p.innerHTML = "&nbsp;"
-                    // console.log(p);
+                  // // for (let p of document.querySelectorAll("td")) {
+                  // //   p.innerHTML = "&nbsp;"
+                  //   // console.log(p);
 
-                  }             
+                  // }             
                   
-                  document.querySelector(".main-page").style.display = 'none';
+                  // document.querySelector(".main-page").style.display = 'none';
                   // document.querySelector(".main-page").innerHTML = `<div id="won">won</div>`;
                   
 
@@ -237,11 +265,11 @@ function play(clickedCell){
 function changeCell() {
   if (nextPlayer == nextPlayers.playerOne.symbol) {
     nextPlayer = nextPlayers.playerTwo.symbol;
-    nextPlayerName = nextPlayers.playerTwo.name;
+    nextPlayerName = nextPlayers.playerTwo.playerName;
     }
   else {
     nextPlayer = nextPlayers.playerOne.symbol;
-    nextPlayerName = nextPlayers.playerOne.name;
+    nextPlayerName = nextPlayers.playerOne.playName;
   }
   }
 
