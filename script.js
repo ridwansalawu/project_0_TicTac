@@ -1,11 +1,34 @@
-let players = [];
+const players = [];
 
-let symbols = {
+const symbols = {
   "ex":"X",
   "oh":"O",
 };
+
+let nextPlayers = {
+  playerOne:{ 
+              "player_name":"",
+              "symbol":symbols.oh,
+             },
+  playerTwo: {
+             "player_name": "",
+             "symbol":symbols.ex,
+              }
+
+              }
+
+
 let someHasWon = false;
-// let p1 = prompt("what is your name", "")
+
+function toggleElem(elem) {
+  if (elem.style.display === "none") {
+    elem.style.display = "block";
+  }
+  else if (elem.style.display === "block") {
+    elem.style.display = "none";
+  }
+}
+
 
 function nextPage(x) {
   if (document.getElementById("select-item").value === "tictactoe") {
@@ -15,15 +38,37 @@ function nextPage(x) {
         }
   else{ 
     alert(`Be patient buddy,${document.getElementById("select-item").value} in on the way `);}
-
-  console.log(x.parentNode.nextElementSibling);
 }
+
+
+// const startNode = document.querySelector("#startz");
+
+// startNode.addEventListener("click", alert(startNode.id), false );
+
 
 function startGame() {
-  document.querySelector(".main-page").style.display="block";
-}
+      let game_player1 = document.querySelector("#player1").value;
+      let game_player2 = document.querySelector("#player2").value;
+      players.push(game_player1);
+      players.push(game_player2);
+      document.querySelector(".main-page").style.display="block";
+      document.querySelector("#display-panel").innerHTML = `<h3>${players[0]}  Vs  ${players[1]}</h3>`;
 
-  
+      
+      nextPlayers = {
+      playerOne:{ 
+              "player_name": players[0],
+              "symbol":symbols.oh,
+             },
+      playerTwo: {
+             "player_name": players[1],
+             "symbol":symbols.ex,
+              }
+
+              }
+      }
+
+     console.log(nextPlayers);
 
 function checkEquality(arr) {
   if ((arr[0]===arr[1]) && (arr[1] === arr[2]) )
@@ -35,10 +80,25 @@ function reset() {
 }
 
 
+function clearBoard() {
+  startGame();
+  console.log(nextPlayerName);
+  document.querySelector(".main-page").style.display = 'block';
+}
 
-players[0] = "john";
-players[1] = "doe";
-let nextPlayer = symbols.oh;
+
+
+// console.log(nextPlayers.playerOne.name);
+
+
+
+
+
+
+
+let nextPlayer = nextPlayers.playerOne.symbol;
+let nextPlayerName = nextPlayers.playerOne.name;
+
 // ${symbols['oh']}
 
 function play(clickedCell){
@@ -118,39 +178,44 @@ function play(clickedCell){
          ((arrEight[0] != "&nbsp;") && checkEquality(arrEight)) 
          ) 
                 {
-                  someHasWon = true;
+                  someHasWon = nextPlayer;
+
+
+
                   
 
-                console.log("won");
+                console.log(someHasWon);
+                console.log(nextPlayerName + " has won");
                 
 
 
-                // console.log(arrTds);
-                // console.log(arrTds[1]);
-                // console.log(arrTds[2]);
-                // console.log(arrTds[3]);
 
-                // allTd = document.querySelectorAll("td");
-                // for (let x of allTd) {
-                //   x.style.background = "black";
-                //   x.innerHTML = "";
+                  for (let p of document.querySelectorAll("td")) {
+                    p.innerHTML = "&nbsp;"
+                    // console.log(p);
 
-                // }
-              
-
-                
-                  document.querySelector(".main-page").innerHTML = `<div id="won">won</div>`;
-                  arrTds = [];
+                  }             
+                  
+                  document.querySelector(".main-page").style.display = 'none';
+                  // document.querySelector(".main-page").innerHTML = `<div id="won">won</div>`;
+                  
 
                   let afterWon = document.createElement("input");
-                  afterWon.className = "after-won";
+                  afterWon.className = "after-won-btn";
                   afterWon.value = "Play Again";
                   afterWon.type = "submit";
                   afterWon.setAttribute("onclick", "clearBoard();");
+                  
 
                   // afterWon.onclick = clearBoard
 
-                  document.querySelector(".main-page").append(afterWon);
+                  document.querySelector("html").append(afterWon);
+
+                  // let afterWonReset = document.createElement("input");
+                  // afterWonReset.value = ""
+
+
+                 
                 
                   return;
 
@@ -158,7 +223,7 @@ function play(clickedCell){
                 }
 
                 if (!arrTds.includes("&nbsp;") && !someHasWon) {
-                  alert("Draw");
+                  console.log("Draw");
                 }        
      
 }
@@ -170,18 +235,20 @@ function play(clickedCell){
 // }
 
 function changeCell() {
-  if (nextPlayer == symbols.oh) {
-    nextPlayer = symbols.ex;
+  if (nextPlayer == nextPlayers.playerOne.symbol) {
+    nextPlayer = nextPlayers.playerTwo.symbol;
+    nextPlayerName = nextPlayers.playerTwo.name;
     }
   else {
-    nextPlayer = symbols.oh;
+    nextPlayer = nextPlayers.playerOne.symbol;
+    nextPlayerName = nextPlayers.playerOne.name;
   }
   }
 
 
 
   // document.getElementById("one").innerText = "new text";
-  console.log(document.getElementById("one").innerHTML);
+  // console.log(document.getElementById("one").innerHTML);
 
 
 

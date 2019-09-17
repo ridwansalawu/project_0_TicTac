@@ -33,15 +33,17 @@ Please select a game
      <h3>Please enter the name of the players</h3>
 
 <input type="text" value="Player1" id= "player1">
-<input type="text" value="Player2" id="player2">
-<input type="submit" value="Start" onclick=startGame()>
+<input type="text" value="Player2" id= "player2">
+<input type="submit"  value="Start" id="startz" onclick= startGame() >
 </div>
 
 
       <div class="main-page">
 
           
-            <strong>player0</strong>
+            <div id="display-panel" class="standard-view">
+            <h3>TicTacToe</h3>
+            </div>
 
               <table id="gameTable">
 
@@ -75,7 +77,7 @@ Please select a game
 
               </table>
 
-
+<div class = "after-won standard-view"></div>
             
 
             
