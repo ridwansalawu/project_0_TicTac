@@ -1,9 +1,13 @@
 const players = [];
-
+const resetButtonNode = document.querySelector("#reset-btn");
 const symbols = {
   "ex":"X",
   "oh":"O",
 };
+
+function removeBtnNode() {
+  location.reload();
+}
 
 let allCells = document.querySelectorAll("td");
 let winner = "";
@@ -99,7 +103,7 @@ function reset() {
            
           for (let p of document.querySelectorAll("td")) {
           p.setAttribute("style", `border: 1px solid black;
-          background-color: rgba(26, 156, 102, 0.411);`);
+          background-color: white;`);
 
           p.innerHTML = "&nbsp;"
           // console.log(p);
@@ -112,18 +116,6 @@ function clearBoard() {
   console.log(nextPlayerName);
   document.querySelector(".main-page").style.display = 'block';
 }
-
-
-
-// console.log(nextPlayers.playerOne.name);
-
-
-
-let resetNode = document.querySelector("#reset-btn");
-console.log(resetNode);
-resetNode.addEventListener("click", reset, false);
-
-
 
 let nextPlayer = nextPlayers.playerOne.symbol;
 let nextPlayerName = nextPlayers.playerOne.playerName;
@@ -215,10 +207,24 @@ function play(clickedCell){
                     winner = nextPlayers.playerOne.playerName;
                   }
 console.log(winner + " has won");
-                  setTimeout(celebrateWin, 1000);
+
+               document.querySelector("#end-view").style.display = "block";
+                 
+                 let sentence = `${winner} won this round` ; 
+                  endStatement(sentence);
+
+                  let clnReset = resetButtonNode.cloneNode();
+                  clnReset.className = "down-below";
+                  clnReset.value = "Replay?";
+                  document.querySelector("#end-view").appendChild(clnReset);
+
+                  clnReset.addEventListener("click", removeBtnNode, false);
+
+
+                  
                   
 
-                  // reset();
+           
                 
 
 
@@ -233,24 +239,24 @@ console.log(winner + " has won");
                   // document.querySelector(".main-page").innerHTML = `<div id="won">won</div>`;
                   
 
-                  let afterWon = document.createElement("input");
-                  afterWon.className = "after-won-btn";
-                  afterWon.value = "Play Again";
-                  afterWon.type = "submit";
-                  afterWon.setAttribute("onclick", "clearBoard();");
+                  // let afterWon = document.createElement("input");
+                  // afterWon.className = "after-won-btn";
+                  // afterWon.value = "Play Again";
+                  // afterWon.type = "submit";
+                  // afterWon.setAttribute("onclick", "clearBoard();");
                   
 
-                  // afterWon.onclick = clearBoard
+                  // // afterWon.onclick = clearBoard
 
-                  document.querySelector("html").append(afterWon);
+                  // document.querySelector("html").append(afterWon);
 
-                  // let afterWonReset = document.createElement("input");
-                  // afterWonReset.value = ""
+                  // // let afterWonReset = document.createElement("input");
+                  // // afterWonReset.value = ""
 
 
                  
                 
-                  return;
+                  // return;
 
 
                 }
@@ -260,6 +266,15 @@ console.log(winner + " has won");
 
                   document.querySelector("#end-view").style.display = "block";
                   endStatement(sentence);
+
+                  let clnReset = resetButtonNode.cloneNode();
+                  clnReset.className = "down-below";
+                  document.querySelector("#end-view").appendChild(clnReset);
+                  clnReset.addEventListener("click", removeBtnNode, false);
+
+
+
+
 console.log("Draw");
                 }        
      
