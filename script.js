@@ -1,4 +1,5 @@
 const players = [];
+
 const symbols = {
   "ex":"X",
   "oh":"O",
@@ -19,7 +20,6 @@ let nextPlayers = {
 
               }
 
-
 let someHasWon = false;
 
 function toggleElem(elem) {
@@ -36,11 +36,16 @@ function celebrateWin() {
     nodez.setAttribute("style", `border: 0px solid black;
                                  background-color: rgba(0, 8, 6, 0.8);`)
   }
-
-
-
-
 }
+
+function endStatement(sentence) {
+  statement = document.createElement("div");
+  statement.className = "statement-view";
+  statement.innerHTML = `<h1>${sentence}</h1>`;
+  document.querySelector("#end-view").appendChild(statement);
+}
+
+
 
 function checkEquality(arr) {
   if ((arr[0]===arr[1]) && (arr[1] === arr[2]) )
@@ -206,12 +211,12 @@ function play(clickedCell){
                   if (nextPlayerName === nextPlayers.playerOne.playerName) {
                     winner = nextPlayers.playerTwo.playerName;
                   }
-
-                  else winner = nextPlayers.playerOne.playerName;
-                  console.log(winner + " has won");
-
-
+                  else if (nextPlayerName === nextPlayers.playerTwo.playerName) {
+                    winner = nextPlayers.playerOne.playerName;
+                  }
+console.log(winner + " has won");
                   setTimeout(celebrateWin, 1000);
+                  
 
                   // reset();
                 
@@ -250,8 +255,12 @@ function play(clickedCell){
 
                 }
 
-                if (!arrTds.includes("&nbsp;") && !someHasWon) {
-                  console.log("Draw");
+                  if (!arrTds.includes("&nbsp;") && !someHasWon) {
+                  let sentence = "Draw"
+
+                  document.querySelector("#end-view").style.display = "block";
+                  endStatement(sentence);
+console.log("Draw");
                 }        
      
 }
