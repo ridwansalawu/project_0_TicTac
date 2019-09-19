@@ -32,8 +32,11 @@ html{
 }
 
 span {
-    font-size: 40px;
+    
     color:rgb(7, 3, 44);
+    font-size: 100px;
+    color: rgb(7, 3, 44);
+    font-family: fantasy;
 }
 
 #won {

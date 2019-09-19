@@ -1,16 +1,20 @@
+// GLOBAL VARIABLES
+// ------------------------------------------------------------------------------------
+
 const players = [];
 const resetButtonNode = document.querySelector("#reset-btn");
+const replayButtonNode = document.querySelector("#replay-btn");
+let allCells = document.querySelectorAll("td");
+let winner = "";
+let someHasWon = false;
+
+// _____________________________________________________________________________________
+// OBJECTS
+// ______________________________________________________________________________________
 const symbols = {
   "ex":"X",
   "oh":"O",
 };
-
-function removeBtnNode() {
-  location.reload();
-}
-
-let allCells = document.querySelectorAll("td");
-let winner = "";
 
 let nextPlayers = {
   playerOne:{ 
@@ -24,7 +28,32 @@ let nextPlayers = {
 
               }
 
-let someHasWon = false;
+
+// _____________________________________________________________________________________
+// FUNCTIONS
+// ______________________________________________________________________________________
+
+function removeBtnNode() {
+  location.reload();
+}
+
+function changeCell() {
+  if (nextPlayer == nextPlayers.playerOne.symbol) {
+    nextPlayer = nextPlayers.playerTwo.symbol;
+    nextPlayerName = nextPlayers.playerTwo.playerName;
+    }
+  else {
+    nextPlayer = nextPlayers.playerOne.symbol;
+    nextPlayerName = nextPlayers.playerOne.playName;
+  }
+  }
+
+
+function replayGame() {
+  $(".chamber").empty();
+  $("#end-view").css("display", "none");
+};
+
 
 function toggleElem(elem) {
   if (elem.style.display === "none") {
@@ -67,11 +96,20 @@ function nextPage(x) {
     alert(`Be patient buddy,${document.getElementById("select-item").value} in on the way `);}
 }
 
+function reset() {
+  for (let p of document.querySelectorAll("td")) {
+  p.setAttribute("style", `border: 1px solid black;
+  background-color: white;`);
+  p.innerHTML = "&nbsp;"
+  // console.log(p);
+ } 
+}
 
-// const startNode = document.querySelector("#startz");
-
-// startNode.addEventListener("click", alert(startNode.id), false );
-
+function clearBoard() {
+  startGame();
+  console.log(nextPlayerName);
+  document.querySelector(".main-page").style.display = 'block';
+}
 
 function startGame() {
       let game_player1 = document.querySelector("#player1").value;
@@ -94,33 +132,10 @@ function startGame() {
 
               }
       }
-
-     console.log(nextPlayers);
-
-
-
-function reset() {
-           
-          for (let p of document.querySelectorAll("td")) {
-          p.setAttribute("style", `border: 1px solid black;
-          background-color: white;`);
-
-          p.innerHTML = "&nbsp;"
-          // console.log(p);
-         } 
-      }
-
-
-function clearBoard() {
-  startGame();
-  console.log(nextPlayerName);
-  document.querySelector(".main-page").style.display = 'block';
-}
-
 let nextPlayer = nextPlayers.playerOne.symbol;
 let nextPlayerName = nextPlayers.playerOne.playerName;
 
-// ${symbols['oh']}
+
 
 function play(clickedCell){
     if (clickedCell.innerHTML == "&nbsp;") {
@@ -217,15 +232,16 @@ console.log(winner + " has won");
                   clnReset.className = "down-below";
                   clnReset.value = "Replay?";
                   document.querySelector("#end-view").appendChild(clnReset);
+                    
+                  clnReset.addEventListener("click", replayGame, false);
 
-                  clnReset.addEventListener("click", removeBtnNode, false);
 
+  function replayGame() {
+    $(".chamber").html ("&nbsp;");
+    $("#end-view").css("display", "none");
+  };
 
-                  
-                  
-
-           
-                
+            
 
 
 
@@ -256,6 +272,9 @@ console.log(winner + " has won");
 
                  
                 
+
+
+
                   // return;
 
 
@@ -270,7 +289,7 @@ console.log(winner + " has won");
                   let clnReset = resetButtonNode.cloneNode();
                   clnReset.className = "down-below";
                   document.querySelector("#end-view").appendChild(clnReset);
-                  clnReset.addEventListener("click", removeBtnNode, false);
+                  clnReset.addEventListener("click", reset, false);
 
 
 
@@ -286,25 +305,24 @@ console.log("Draw");
 
 // }
 
-function changeCell() {
-  if (nextPlayer == nextPlayers.playerOne.symbol) {
-    nextPlayer = nextPlayers.playerTwo.symbol;
-    nextPlayerName = nextPlayers.playerTwo.playerName;
-    }
-  else {
-    nextPlayer = nextPlayers.playerOne.symbol;
-    nextPlayerName = nextPlayers.playerOne.playName;
-  }
-  }
+
 
 
 
   // document.getElementById("one").innerText = "new text";
   // console.log(document.getElementById("one").innerHTML);
 
+// function clearBoardData() {
+  
+//       $(".chamber").text('&nbsp;');
+
+// }
 
 
 
+// const startNode = document.querySelector("#startz");
+
+// startNode.addEventListener("click", alert(startNode.id), false );
 
 
 
