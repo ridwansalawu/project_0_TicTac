@@ -49,10 +49,19 @@ function changeCell() {
   }
 
 
+// function replayGame() {
+//   $(".chamber").empty();
+//   $("#end-view").css("display", "none");
+//   $(".statement-view").css("display", "none");
+
+// }
+
 function replayGame() {
-  $(".chamber").empty();
-  $("#end-view").css("display", "none");
-};
+  $(".chamber").html("&nbsp;");
+  $("#end-view").slideUp();
+  $(".down-below").remove();
+
+}
 
 
 function toggleElem(elem) {
@@ -218,28 +227,32 @@ function play(clickedCell){
                   if (nextPlayerName === nextPlayers.playerOne.playerName) {
                     winner = nextPlayers.playerTwo.playerName;
                   }
-                  else if (nextPlayerName === nextPlayers.playerTwo.playerName) {
-                    winner = nextPlayers.playerOne.playerName;
-                  }
+                  winner = nextPlayers.playerOne.playerName;
+
+                  // else if (nextPlayerName === nextPlayers.playerTwo.playerName) {
+                  //   winner = nextPlayers.playerOne.playerName;
+                  // }
+
+
 console.log(winner + " has won");
-
-               document.querySelector("#end-view").style.display = "block";
-                 
-                 let sentence = `${winner} won this round` ; 
-                  endStatement(sentence);
-
-                  let clnReset = resetButtonNode.cloneNode();
-                  clnReset.className = "down-below";
-                  clnReset.value = "Replay?";
-                  document.querySelector("#end-view").appendChild(clnReset);
-                    
-                  clnReset.addEventListener("click", replayGame, false);
+            $("#end-view").children().remove();
+            document.querySelector("#end-view").style.display = "block";
+            let sentence = `${winner} won this round` ; 
+            endStatement(sentence);
+            let clnReset = resetButtonNode.cloneNode(false);
+            clnReset.className = "down-below";
+            clnReset.value = "Replay?";
+            document.querySelector("#end-view").append(clnReset);
+              
+            clnReset.addEventListener("click", replayGame, false);
 
 
-  function replayGame() {
-    $(".chamber").html ("&nbsp;");
-    $("#end-view").css("display", "none");
-  };
+  // function replayGame() {
+  //   $(".chamber").html ("&nbsp;");
+  //   $("#end-view").css("display", "none");
+  // };
+
+  
 
             
 
