@@ -29,6 +29,12 @@ let nextPlayers = {
               }
 
 
+$(function( ){
+
+
+  $("#reset-btn").on("click", removeBtnNode);
+
+})
 // _____________________________________________________________________________________
 // FUNCTIONS
 // ______________________________________________________________________________________
@@ -108,7 +114,8 @@ function nextPage(x) {
 function reset() {
   for (let p of document.querySelectorAll("td")) {
   p.setAttribute("style", `border: 1px solid black;
-  background-color: white;`);
+  background-color: black;`);
+  $("#end-view").remove();
   p.innerHTML = "&nbsp;"
   // console.log(p);
  } 
@@ -302,7 +309,7 @@ console.log(winner + " has won");
                   let clnReset = resetButtonNode.cloneNode();
                   clnReset.className = "down-below";
                   document.querySelector("#end-view").appendChild(clnReset);
-                  clnReset.addEventListener("click", reset, false);
+                  clnReset.addEventListener("click", replayGame, false);
 
 
 
