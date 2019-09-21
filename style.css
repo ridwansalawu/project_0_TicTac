@@ -94,11 +94,12 @@ span {
 #display-panel {
    
     height: 40px;
-    border: solid red 2px;
+    font-family: fantasy;
     border-radius: 50px;
     margin: auto;
     margin-bottom: 20px;
     margin-top: -20px;
+    font-size: 28px;
     
 }
 
@@ -107,17 +108,16 @@ span {
 
 
     
-        background-color: #4CAF50;
+        background-color:#00000000;
         border: none;
-        color: white;
-        padding: 15px 32px;
+        padding: 0;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
+        font-size: 60px;
+        margin: 0;
         cursor: pointer;
-        border-radius: 50%;
+       
       
 
 }
