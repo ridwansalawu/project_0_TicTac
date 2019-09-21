@@ -34,8 +34,8 @@ Please select a game
 <div id="players-entry" class="standard-view">
      <h3>Please enter the name of the players</h3>
 
-<input type="text" value="Player1" id= "player1">
-<input type="text" value="Player2" id= "player2">
+<input type="text" value="Player1" id= "player1" class="player">
+<input type="text" value="Player2" id= "player2" class="player">
 <input type="submit"  value="Start" id="startz" onclick= startGame() >
 </div>
 
@@ -48,18 +48,6 @@ Please select a game
             </div>
 
               <table id="gameTable">
-
-                  <!--
-                    <td id="tile1"></td>
-                    <td id="tile2"></td>
-                    <td id="tile3"></td>
-
-                    let items = [];
-                    for(int i=0; i<9; i++){
-                      items.push(document.getElementById('tile' + i))
-                    }
-
-                   -->
 
                   <tr id= row1>
                     <td class="chamber" onclick= "play(this);" id="one">&nbsp;</td>
@@ -78,7 +66,6 @@ Please select a game
                   </tr>
 
               </table>
-              <!-- <button id="reset-btn"> <i class="fas fa-snowboarding fa-flip-both"></i> </button> -->
 
               <input type="reset" value= &#128260;  id="reset-btn">
 

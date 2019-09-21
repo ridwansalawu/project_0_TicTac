@@ -1,7 +1,7 @@
 .main-page {
     display: none;
-    width: 500px;
-    height: 600px;
+    width: 30vw;
+    height: 75vh;
     border: 1px solid rgb(7, 7, 7);
     padding: 50px;
     margin: 20px;
@@ -11,18 +11,18 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -250px;
-    margin-left: -250px;
+    margin-top: -300px;
+    margin-left: -270px;
     padding: 30px;
     text-align: center;
-    background-color: rgb(139, 79, 79);
+    background-color: rgb(0, 0, 0);
 }
 
 td {
     border: 1px solid black;
     width: 500px;
     height: 150px;
-    background-color: rgba(26, 156, 102, 0.411);
+    background-color: rgba(239, 224, 231, 0.98);
     margin: 10px;
     padding: 10px;
     overflow: hidden;
@@ -77,6 +77,10 @@ span {
     margin: auto 0;
     text-align: center;
     margin-top: 250px;
+    font-family: fantasy;
+    color: crimson;
+    font-weight: bolder;
+    font-size: xx-large;
 
 }
 
@@ -87,12 +91,22 @@ span {
     
 }
 
+.player {
+
+font-family: fantasy;
+    color: crimson;
+    font-weight: bolder;
+    font-size: 20px;
+
+
+}
+
 #players-entry {
     display: none;
 }
 
 #display-panel {
-   
+    color: cornsilk;
     height: 40px;
     font-family: fantasy;
     border-radius: 50px;
@@ -124,8 +138,8 @@ span {
 
 #end-view {
     display: none;
-    width: 500px;
-    height: 650px;
+    width: 30vw;
+    height: 75vh;
     border: 10px solid rgb(255, 6, 6);
     padding: 50px;
     margin: 20px;
@@ -135,8 +149,8 @@ span {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -280px;
-    margin-left: -250px;
+    margin-top: -300px;
+    margin-left: -270px;
     padding: 30px;
     text-align: center;
     
